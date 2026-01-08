@@ -1,0 +1,90 @@
+{
+  "helix_mode": true,
+  "vim_mode": false,
+  "base_keymap": "VSCode",
+  "soft_wrap": "editor_width",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": "One Dark",
+  "autosave": "on_focus_change",
+    "lsp": {
+      "jdtls": {
+        "binary": {
+          "path": "/usr/local/bin/jdtls",
+        },
+        "initialization_options": {
+          // "vmargs": [
+          //   "-Xmx2G",
+          //   "-XX:+UseG1GC",
+          //   "-javaagent:/home/vy/lombok.jar"
+          // ],
+          "settings": {
+            "java": {
+              "home": "/usr/lib/jvm/java-21-openjdk-amd64",
+              "import": {
+                "maven": { "enabled": true },
+                "exclusions": [
+                  "**/node_modules/**",
+                  "**/.metadata/**",
+                  "**/archetype-resources/**",
+                  "**/META-INF/maven/**",
+                  "/**/test/**"
+                ]
+              },
+              "autobuild": { "enabled": false },
+              "format": { "enabled": true },
+              "referencesCodeLens": { "enabled": false },
+              "signatureHelp": { "enabled": false },
+              "implementationsCodeLens": { "enabled": true },
+              "completion": {
+                "favoriteStaticMembers": [
+                  "org.junit.Assert.*",
+                  "org.junit.Assume.*",
+                  "org.junit.jupiter.api.Assertions.*",
+                  "org.junit.jupiter.api.Assumptions.*"
+                ],
+                "importOrder": ["java", "javax", "com", "org"]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "languages": {
+    "LaTeX": {
+      "format_on_save": "on",
+      "language_servers": ["texlab"],
+      "initialization_options": {
+        "texlab": {
+          "build": {
+            "executable": "latexmk",
+            "args": ["-pdf", "-interaction=nonstopmode", "-synctex=1", "%f"],
+            "onSave": true,
+          },
+          "forwardSearch": {
+            "executable": "zathura",
+            "args": ["--synctex-forward", "%l:1:%f", "%p"],
+          },
+        },
+      },
+    },
+    // "Java": {
+    //   "format_on_save": "on",
+    //   "language_servers": ["jdtls"],
+    // },
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/target", // Common for Java/Maven projects
+    "**/build", // Common for Gradle/Java
+    "**/.settings",
+    "**/vendor",
+  ],
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+  },
+}
