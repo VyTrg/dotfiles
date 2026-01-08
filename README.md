@@ -1,2 +1,2 @@
 # dotfiles
-This repo contains my dotfiles on ubuntu
+This repo contains my dotfiles on Ubuntu [Omakub](https://omakub.org/)
