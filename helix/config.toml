@@ -1,0 +1,27 @@
+theme = "tokyonight" # You can see all themes by typing :theme in Helix
+
+[editor]
+line-number = "relative" # Shows relative line numbers
+mouse = true             # Enables mouse support
+cursorline = true        # Highlights the current line
+bufferline = "always"
+
+[editor.cursor-shape]
+insert = "bar"           # Thin bar in insert mode
+normal = "block"         # Block in normal mode
+
+[editor.lsp]
+display-messages = true
+
+
+[editor.soft-wrap]
+enable = true
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[editor.auto-save]
+focus-lost  = true
+after-delay.enable = true
+after-delay.timeout = 300000
+
