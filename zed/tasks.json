@@ -1,0 +1,38 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+//
+// Example:
+[
+  {
+    "label": "Example task",
+    "command": "for i in {1..5}; do echo \"Hello $i/5\"; sleep 1; done",
+    "env": { "foo": "bar" },
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "dock",
+    "hide": "never",
+    "shell": "system",
+    "show_summary": true,
+    "show_command": true,
+    "save": "none",
+  },
+
+  {
+    "label": "Checkout $ZED_GIT_SHA_SHORT",
+    "command": "git",
+    "args": ["checkout", "$ZED_GIT_SHA"],
+    "tags": ["git-command"],
+  },
+  {
+    "label": "Cherry-pick $ZED_GIT_SHA_SHORT",
+    "command": "git",
+    "args": ["cherry-pick", "$ZED_GIT_SHA"],
+    "tags": ["git-command"],
+  },
+  {
+    "label": "Rebase on $ZED_GIT_SHA_SHORT",
+    "command": "git",
+    "args": ["rebase", "$ZED_GIT_SHA"],
+    "tags": ["git-command"],
+  },
+]
