@@ -188,19 +188,9 @@ binds {
     // do not disturb
     Mod+Shift+D { spawn "swaync-client" "-d"; }
     // ──────────────────────────────────────────────────────────
-    // Rofi
+    // fuzzel
     // ──────────────────────────────────────────────────────────
-     Mod+D { spawn "~/.config/rofi/scripts/launcher.sh"; }
-
-    // Power menu
-    Mod+Shift+E { spawn "~/.config/rofi/scripts/powermenu.sh"; }
-
-    // Clipboard
-    Mod+V { spawn "~/.config/rofi/scripts/clipboard.sh"; }
-
-    // WiFi
-    Mod+Shift+W { spawn "~/.config/rofi/scripts/wifi.sh"; }
-
-    // Bluetooth
-    Mod+Shift+B { spawn "~/.config/rofi/scripts/bluetooth.sh"; }
+     Mod+D { spawn "fuzzel"; }
+     Mod+G { spawn "sh" "-c" "XDG_CURRENT_DESKTOP=\"gnome\" gnome-control-center"; }
+     Ctrl+Escape { switch-layout "next"; }
 }

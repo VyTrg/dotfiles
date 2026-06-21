@@ -1,6 +1,8 @@
 input {
     keyboard {
         xkb {
+            layout "us,vn"
+
         }
 
         numlock
@@ -20,30 +22,30 @@ input {
 }
 
 output "eDP-1" {
-    
+
     mode "1920x1080@120.030"
 
-   
+
     scale 2
 
-   
+
     transform "normal"
 
-   
+
     position x=1280 y=0
 }
 
 
 layout {
-    
+
     gaps 16
 
-   
+
     center-focused-column "never"
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
-        
+
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
@@ -130,7 +132,7 @@ layout {
 
     // You can enable drop shadows for windows.
     shadow {
-        
+
 
         // Softness controls the shadow blur radius.
         softness 30
@@ -161,13 +163,23 @@ layout {
 
 // Note that running niri as a session supports xdg-desktop-autostart,
 
+// Named, persistent workspaces — always present (even when empty).
+// niri renders them in REVERSE of declaration order, so declaring 5→1
+// makes them appear on-screen (and in Waybar) in 1→5 order. The last
+// declared workspace ("1") is the default focused one at startup.
+workspace "5"
+workspace "4"
+workspace "3"
+workspace "2"
+workspace "1"
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 spawn-at-startup "swaync"
-
+// Auto-reload waybar whenever its config/style changes.
+spawn-at-startup "bash" "-c" "~/.config/waybar/watch.sh"
 hotkey-overlay {
-    
+
 }
 
 
@@ -183,10 +195,13 @@ animations {
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
 }
+environment {
+    "XDG_CURRENT_DESKTOP" "GNOME"
+    "ELECTRON_OZONE_PLATFORM_HINT" "wayland"
 
-
-
-
+    "GDK_BACKEND" "wayland"
+    "QT_QPA_PLATFORM" "wayland"
+}
 include "window_rules.kdl"
 
 include "binds.kdl"

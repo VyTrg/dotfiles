@@ -1,0 +1,360 @@
+/* swaync theme — matched to waybar color scheme */
+
+/* ── palette (from ~/.config/waybar/colors.css) ── */
+@define-color base                #111318;
+@define-color surface             #111318;
+@define-color overlay             #43474e;
+@define-color text                #e1e2e9;
+@define-color subtext             #c4c6cf;
+@define-color primary             #a7c8ff;
+@define-color on_primary          #04305f;
+@define-color secondary           #bdc7dc;
+@define-color on_secondary        #273141;
+@define-color tertiary            #dbbce1;
+@define-color error               #ffb4ab;
+@define-color primary_container   #244777;
+@define-color on_primary_container #d5e3ff;
+
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", monospace;
+  font-size: 15px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ───────────────────────── popup notifications ───────────────────────── */
+
+.notification-row {
+  outline: none;
+  background: transparent;
+}
+
+.notification-row:focus,
+.notification-row:hover {
+  background: transparent;
+}
+
+.notification {
+  margin: 6px 8px 0 8px;
+  padding: 0;
+  border-radius: 12px;
+  background-color: alpha(@base, 0.85);
+  border: 1px solid alpha(@text, 0.20);
+}
+
+.notification-content {
+  padding: 10px;
+  border-radius: 12px;
+}
+
+/* critical notifications get the accent edge */
+.notification.critical {
+  border: 1px solid alpha(@error, 0.70);
+}
+.notification.low {
+  border: 1px solid alpha(@text, 0.10);
+}
+
+.summary {
+  color: @text;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.time {
+  color: @subtext;
+  font-size: 13px;
+}
+
+.body {
+  color: @subtext;
+  font-size: 14px;
+}
+
+.body-image {
+  margin-top: 8px;
+  border-radius: 8px;
+}
+
+.notification-default-action,
+.notification-action {
+  background: transparent;
+  color: @text;
+  border-radius: 8px;
+}
+
+.notification-default-action:hover {
+  background-color: alpha(@secondary, 0.15);
+}
+
+/* inline action buttons */
+.notification-action {
+  margin: 6px 4px 0 4px;
+  padding: 4px 8px;
+  background-color: alpha(@secondary, 0.15);
+  border: 1px solid alpha(@text, 0.10);
+  color: @text;
+}
+.notification-action:hover {
+  background: linear-gradient(to right, @primary, @tertiary);
+  color: @base;
+}
+
+.notification-action:first-child  { border-radius: 8px 0 0 8px; }
+.notification-action:last-child   { border-radius: 0 8px 8px 0; }
+
+/* app icon / image */
+.image,
+.app-icon {
+  margin: 2px 8px 0 2px;
+}
+
+/* close (X) button */
+.close-button {
+  background: alpha(@secondary, 0.15);
+  color: @text;
+  margin: 6px 6px 0 0;
+  padding: 2px;
+  border-radius: 8px;
+  min-width: 22px;
+  min-height: 22px;
+}
+.close-button:hover {
+  background: @error;
+  color: @base;
+}
+
+/* inline reply box */
+.notification .inline-reply {
+  margin-top: 8px;
+}
+.notification .inline-reply-entry {
+  background: alpha(@base, 0.60);
+  color: @text;
+  caret-color: @text;
+  border: 1px solid alpha(@text, 0.20);
+  border-radius: 8px;
+}
+.notification .inline-reply-button {
+  margin-left: 6px;
+  background: alpha(@secondary, 0.15);
+  color: @text;
+  border: 1px solid alpha(@text, 0.10);
+  border-radius: 8px;
+  padding: 2px 10px;
+}
+.notification .inline-reply-button:hover {
+  background: linear-gradient(to right, @primary, @tertiary);
+  color: @base;
+}
+
+/* floating popup stack background must stay clear */
+.floating-notifications {
+  background: transparent;
+}
+
+/* ───────────────────────── control center ───────────────────────── */
+
+.blank-window {
+  background: transparent;
+}
+
+.control-center {
+  background-color: alpha(@base, 0.92);
+  border: 1px solid alpha(@text, 0.20);
+  border-radius: 14px;
+  padding: 14px;
+  margin: 0;
+}
+
+.control-center .notification-row .notification {
+  margin: 6px 0 0 0;
+}
+
+/* the scrollable list of stored notifications */
+.control-center-list {
+  background: transparent;
+}
+.control-center-list-placeholder {
+  color: alpha(@text, 0.35);
+  font-size: 22px;
+}
+
+scrollbar {
+  background: transparent;
+}
+scrollbar slider {
+  background: alpha(@secondary, 0.30);
+  border-radius: 8px;
+  min-width: 6px;
+}
+scrollbar slider:hover {
+  background: alpha(@secondary, 0.55);
+}
+
+/* ── widgets ── */
+
+/* title bar + Clear All */
+.widget-title {
+  color: @text;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 4px 4px 12px 4px;
+}
+.widget-title > button {
+  font-size: 14px;
+  color: @text;
+  background: alpha(@secondary, 0.15);
+  border: 1px solid alpha(@text, 0.10);
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+.widget-title > button:hover {
+  background: linear-gradient(to right, @primary, @tertiary);
+  color: @base;
+}
+
+/* control-center buttons grid (wifi / bluetooth / airplane …) */
+.widget-buttons-grid {
+  padding: 4px;
+  margin: 8px 4px;
+  background-color: alpha(@secondary, 0.12);
+  border-radius: 12px;
+}
+.widget-buttons-grid > flowbox {
+  padding: 4px;
+}
+.widget-buttons-grid > flowbox > flowboxchild {
+  padding: 4px;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background-color: alpha(@secondary, 0.15);
+  color: @text;
+  border: 1px solid alpha(@text, 0.10);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 18px;
+  min-width: 40px;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background-color: alpha(@secondary, 0.28);
+}
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked,
+.widget-buttons-grid > flowbox > flowboxchild > button:checked {
+  background: linear-gradient(to right, @primary, @tertiary);
+  color: @base;
+  border: 1px solid transparent;
+}
+
+/* Do Not Disturb toggle */
+.widget-dnd {
+  color: @text;
+  font-size: 15px;
+  margin: 4px;
+}
+.widget-dnd > switch {
+  background: alpha(@secondary, 0.20);
+  border-radius: 14px;
+  border: 1px solid alpha(@text, 0.10);
+  min-width: 50px;
+  min-height: 24px;
+}
+.widget-dnd > switch:checked {
+  background: linear-gradient(to right, @primary, @tertiary);
+}
+.widget-dnd > switch slider {
+  background: @text;
+  border-radius: 12px;
+  min-width: 20px;
+  min-height: 20px;
+}
+.widget-dnd > switch:checked slider {
+  background: @base;
+}
+
+/* media player (mpris) */
+.widget-mpris {
+  background-color: alpha(@secondary, 0.12);
+  border-radius: 12px;
+  padding: 10px;
+  margin: 8px 4px;
+}
+.widget-mpris-player {
+  padding: 4px;
+}
+.widget-mpris-title {
+  color: @text;
+  font-weight: 600;
+  font-size: 15px;
+}
+.widget-mpris-subtitle {
+  color: @subtext;
+  font-size: 13px;
+}
+.widget-mpris > box > button {
+  color: @text;
+  background: transparent;
+  border-radius: 8px;
+}
+.widget-mpris > box > button:hover {
+  background: alpha(@secondary, 0.20);
+}
+
+/* volume + per-app sliders */
+.widget-volume {
+  background-color: alpha(@secondary, 0.12);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin: 8px 4px;
+  color: @text;
+}
+.widget-volume trough {
+  background-color: alpha(@text, 0.15);
+  border-radius: 8px;
+  min-height: 8px;
+}
+.widget-volume trough highlight {
+  background: linear-gradient(to right, @primary, @tertiary);
+  border-radius: 8px;
+}
+.widget-volume slider {
+  background: @text;
+  border-radius: 12px;
+  min-width: 16px;
+  min-height: 16px;
+}
+.per-app-volume {
+  margin: 4px 0;
+}
+
+/* backlight slider */
+.widget-backlight {
+  background-color: alpha(@secondary, 0.12);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin: 8px 4px;
+  color: @text;
+}
+.widget-backlight trough {
+  background-color: alpha(@text, 0.15);
+  border-radius: 8px;
+  min-height: 8px;
+}
+.widget-backlight trough highlight {
+  background: linear-gradient(to right, @primary, @tertiary);
+  border-radius: 8px;
+}
+.widget-backlight slider {
+  background: @text;
+  border-radius: 12px;
+  min-width: 16px;
+  min-height: 16px;
+}
+
+/* generic label widget */
+.widget-label > label {
+  color: @text;
+}

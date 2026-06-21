@@ -1,0 +1,209 @@
+{
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "height": 34, // Waybar height (to be removed for auto height)
+  "width": 1920, // Waybar width
+  "spacing": 12, // Gaps between modules (4px)
+  "margin-top": 1,
+  "margin-bottom": -1,
+
+  "modules-left": ["niri/workspaces", "wlr/taskbar"],
+
+  "modules-center": ["clock"],
+
+  "modules-right": ["battery", "cpu", "temperature", "memory", "group/hw"],
+
+  "custom/separator-open": {
+    "format": "[",
+    "interval": "once",
+    "tooltip": false,
+  },
+
+  "custom/separator-close": {
+    "format": "]",
+    "interval": "once",
+    "tooltip": false,
+  },
+
+  "custom/pacman": {
+    "format": "{}",
+    "exec": "~/.local/bin/pacman.sh",
+    "tooltip": false,
+    "interval": 360,
+  },
+
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "on-click-right": "minimize",
+    "all-outputs": false,
+    "active-first": false,
+    "ignore-list": [],
+  },
+
+  "niri/window": {
+    "format": " {title:.40}",
+    "max-length": 40,
+    "tooltip": true,
+    "separate-outputs": true,
+  },
+
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": " {:%A, %d %B %H:%M}",
+    "format-alt": " {:%H:%M}",
+  },
+
+  "cpu": {
+    "format": " {usage}%",
+    "on-click": "kitty -e btop",
+    "tooltip": false,
+  },
+
+  "memory": {
+    "format": " {used:0.1f}GiB",
+    "on-click": "kitty -e btop",
+  },
+
+  "temperature": {
+    // "thermal-zone": 2,
+    "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+    "input-filename": "temp1_input",
+    "critical-threshold": 80,
+    // "format-critical": "{temperatureC}°C {icon}",
+    "format": " {temperatureC}°C",
+    "format-icons": ["󰉬", "", "󰉪"],
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": ["", "", ""],
+    "on-scroll-up": "brightnessctl set 5%+",
+    "on-scroll-down": "brightnessctl set 5%-",
+    "tooltip": false,
+  },
+
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{icon} {capacity}%",
+    "format-discharging": "{icon} {capacity}% - {time}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    //"format-alt": "{icon} {time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["", "", "", "", ""],
+    "on-click": "kitty -e upower -d",
+  },
+
+  "battery#bat2": {
+    "bat": "BAT2",
+  },
+
+  "network": {
+    "max-length": 15,
+    // "format-wifi": " {essid} ({signalStrength}%)",
+    "format-wifi": "",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "tooltip-format": "Network Information\n\nSSID  : {essid}\nIP    : {ipaddr}\nBand  : {frequency} MHz\nSignal: {signalStrength}%   \nvia   : {ifname}",
+    "format-linked": "{ifname} (No IP) 󰊗",
+    "format-disconnected": "󱛅",
+    "on-click": "~/.local/bin/wifi.sh",
+  },
+
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-connected": " {num_connections}",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n{status}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "kitty -e bluetoothctl",
+    "on-click-right": "bluetoothctl power off",
+  },
+
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": " {volume}%",
+    //"format-bluetooth": "{volume}% {icon} {format_s" , //ource}",
+    //"format-bluetooth-muted": "󰅶 {icon} {format_source}",
+    "format-muted": "󰅶", //{format_source}",
+    //"format-source": " {volume}%",
+    //"format-source-muted": " ",
+    "on-click": "pavucontrol",
+  },
+
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": "",
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
+    "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%",
+    "tooltip-format": "{source_desc} | {source_volume}%",
+  },
+
+  "custom/weather": {
+    "format": "{}°C",
+    "tooltip": true,
+    "interval": 5400,
+    "exec": "wttrbar --nerd --hide-conditions --date-format '%m/%d' --mph --location=Semarang",
+    "return-type": "json",
+  },
+
+  "group/cpu": {
+    "orientation": "horizontal",
+    "modules": ["cpu", "temperature"],
+  },
+
+  "custom/steam": {
+    "exec": "~/.local/bin/steam.sh",
+    "on-click-right": "killall steam",
+    "interval": 10,
+  },
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󰂚",
+      "none": "󰂜",
+      "dnd-notification": "󰂛",
+      "dnd-none": "󰪛",
+      "inhibited-notification": "󰂚",
+      "inhibited-none": "󰂜",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪛",
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true,
+  },
+
+  "group/hw": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "pulseaudio#microphone",
+      "backlight",
+      "network",
+      "bluetooth",
+      "custom/steam",
+      "custom/notification",
+    ],
+  },
+}

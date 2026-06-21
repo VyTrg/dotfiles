@@ -1,0 +1,236 @@
+* {
+    font-family: "JetBrainsMono Nerd Font Propo", monospace;
+    font-size: 15.5px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+@import "colors.css";
+
+window#waybar {
+    background-color: alpha(@base, 0.85);
+    color: @text;
+    transition: background-color 0.3s ease;
+}
+
+window#waybar.hidden {
+    opacity: 0.3;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    padding: 0 4px;
+}
+
+#workspaces,
+#clock,
+#cpu,
+#custom-pacman,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#pulseaudio.microphone,
+#bluetooth,
+#backlight,
+#custom-weather,
+#custom-spotify,
+#custom-steam,
+#custom-notification {
+    padding: 0 2px;
+    color: @text;
+    background-color: transparent;
+}
+
+#custom-separator-open,
+#custom-separator-close {
+    color: alpha(@secondary, 0.8);
+    padding: 0 3px 0 3px;
+}
+
+#workspaces button {
+    padding: 0 7px;
+    color: @text;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+#workspaces button.empty {
+    color: @text;
+    opacity: 0.35;
+}
+
+#workspaces button:hover {
+    background: linear-gradient(to right, @primary, @tertiary);
+    color: @base;
+    border-radius: 8px;
+    padding: 0 10px;
+    margin: 4 0px;
+}
+
+#workspaces button.active {
+    background: transparent;
+    color: @primary;
+    padding: 0 7px;
+}
+
+#taskbar {
+    padding: 0 4px;
+    background-color: transparent;
+}
+
+#taskbar button {
+    padding: 0 6px;
+    margin: 4px 1px;
+    color: @text;
+    background-color: transparent;
+    border-radius: 8px;
+    border-bottom: 2px solid transparent;
+}
+
+#taskbar button:hover {
+    background-color: alpha(@secondary, 0.15);
+}
+
+#taskbar button.active {
+    border-bottom: 2px solid @primary;
+    background-color: alpha(@primary, 0.12);
+}
+
+#workspaces button.urgent {
+    color: @text;
+    border-bottom: 2px solid alpha(@text, 0.7);
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.4;
+    }
+}
+
+#clock {
+    /* font-weight: 600; */
+    /* letter-spacing: 0.03em; */
+}
+
+#battery {
+    background-color: alpha(@secondary, 0.15);
+    border-radius: 8px;
+    margin: 4px 0;
+    padding: 0 10px;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @text;
+}
+
+#battery.warning:not(.charging) {
+    color: alpha(@text, 0.75);
+}
+
+#battery.critical:not(.charging) {
+    color: @text;
+    animation: blink 1s step-end infinite;
+}
+
+#cpu {
+    padding: 0 0px;
+}
+
+#temperature {
+    padding: 0 0px;
+}
+
+#temperature.critical {
+    animation: blink 1s step-end infinite;
+}
+
+#memory {
+    padding: 0 0px;
+}
+
+#pulseaudio {
+    padding: 0 4px;
+}
+
+#pulseaudio.muted {
+    color: alpha(@text, 0.4);
+}
+
+#pulseaudio.microphone {
+    padding: 0 4px;
+}
+
+#pulseaudio.microphone.source-muted {
+    color: alpha(@text, 0.4);
+}
+
+#backlight {
+    padding: 0 4px;
+}
+
+#network {
+    padding: 0 4px;
+}
+
+#bluetooth {
+    padding: 0 4px;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+    color: alpha(@text, 0.40);
+}
+
+#bluetooth.connected {
+    color: @primary;
+}
+
+#network.disconnected {
+    color: alpha(@text, 0.4);
+}
+
+#custom-steam {
+    padding: 0 4px;
+}
+
+#custom-pacman {
+    padding: 0 4px;
+}
+
+#custom-notification {
+    padding: 0 4px;
+}
+
+#mpris {
+    padding: 0 2px;
+    font-style: normal;
+}
+
+#mpris label {
+    color: @text;
+}
+
+#custom-weather {
+    padding: 0 2px;
+}
+
+#hw {
+    background-color: alpha(@secondary, 0.15);
+    border-radius: 8px;
+    padding: 0 6px;
+    margin: 4px 0;
+}
+tooltip {
+    background-color: @base;
+    border: 1px solid alpha(@text, 0.2);
+    color: @text;
+}
+
+tooltip label {
+    color: @text;
+}
