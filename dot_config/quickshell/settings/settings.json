@@ -1,0 +1,11 @@
+{
+  "notificationPosition": "top-right",
+  "osdPosition": "bottom-center",
+  "barPosition": "top",
+  "barStyle": "dock",
+  "workspaceStyle": "pulse",
+  "launcherIconSize": 12,
+  "rememberSettingsWindowPosition": false,
+  "openSettingsOnGeneralAlways": true,
+  "mainScreen": "HDMI-A-1"
+}
