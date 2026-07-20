@@ -5,6 +5,20 @@ args = ["-c", "exec \"$HOME/.config/tmux/launch_git.sh\""]
 
 # alternative: compile session instead
 # args = ["-c", "exec \"$HOME/.config/tmux/launch_compile.sh\""]
+# ── keybindings ──────────────────────────────────────────────
+# send private escape sequences that tmux maps to popups (see tmux.conf user-keys)
+# Ctrl+Shift+G: lazygit popup
+[[keyboard.bindings]]
+key = "G"
+mods = "Control|Shift"
+chars = "\u001B[6001~"
+
+# Ctrl+Shift+C: compile/shell popup
+# (overrides Alacritty's default copy binding; tmux copy-mode still works)
+[[keyboard.bindings]]
+key = "C"
+mods = "Control|Shift"
+chars = "\u001B[6002~"
 # ── font ─────────────────────────────────────────────────────
 [font]
 size = 11.0

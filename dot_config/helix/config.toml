@@ -1,0 +1,13 @@
+theme = "catppuccin_mocha"
+
+[keys.normal]
+C-r=":reload-all"
+
+[keys.insert]
+C-r=":reload-all"
+
+[keys.select]
+C-r=":reload-all"
+
+[editor.soft-wrap]
+enable=true
