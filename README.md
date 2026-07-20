@@ -14,3 +14,4 @@ I use fedora BTW!
 - starship
 - lazygit
 - zed
+- helix-editor
