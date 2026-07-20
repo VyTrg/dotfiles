@@ -1,13 +1,8 @@
 # ── shell: start tmux with default sessions ─────────────────
-[terminal.shell]
-program = "sh"
-args = ["-c", "exec \"$HOME/.config/tmux/launch_git.sh\""]
+# [terminal.shell]
+# program = "sh"
+# args = ["-c", "exec \"$HOME/.config/tmux/launch_git.sh\""]
 
-# alternative: compile session instead
-# args = ["-c", "exec \"$HOME/.config/tmux/launch_compile.sh\""]
-# ── keybindings ──────────────────────────────────────────────
-# send private escape sequences that tmux maps to popups (see tmux.conf user-keys)
-# Ctrl+Shift+G: lazygit popup
 [[keyboard.bindings]]
 key = "G"
 mods = "Control|Shift"
